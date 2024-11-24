@@ -1,7 +1,5 @@
 package com.colykke.dto.producto;
 
-import com.colykke.dto.vendedor.VendedorNombreResponseDto;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -16,7 +14,7 @@ public class ProductoResponseDto {
 	private String color;
 	private float precio;
 	private String imagen;
-	private VendedorNombreResponseDto vendedorNombre;
+	private String vendedorNombre;
 	
 	public ProductoResponseDto() {}
 }

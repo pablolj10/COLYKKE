@@ -1,7 +1,6 @@
 package com.colykke.dto.producto;
 
 import com.colykke.dto.vendedor.VendedorDto;
-import com.colykke.dto.vendedor.VendedorNombreResponseDto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +17,4 @@ public class ProductoRequestDto {
 	private float precio;
 	private String imagen;
 	private int idVendedor;
-	
-	public ProductoRequestDto() {}
 }

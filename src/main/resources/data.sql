@@ -9,3 +9,5 @@ INSERT INTO producto(nombre,descripcion,color,precio,imagen,FK_VENDEDOR) VALUES 
 INSERT INTO producto(nombre,descripcion,color,precio,imagen,FK_VENDEDOR) VALUES ('prueba3','prueba3','prueba3',1.00,'prueba3',2);
 INSERT INTO producto(nombre,descripcion,color,precio,imagen,FK_VENDEDOR) VALUES ('prueba4','prueba4','prueba4',4.49,'prueba4',3);
 INSERT INTO producto(nombre,descripcion,color,precio,imagen,FK_VENDEDOR) VALUES ('prueba5','prueba5','prueba5',0.10,'prueba5',1);
+
+INSERT INTO cliente(nombre,telefono,correo_electronico,contrasenia) VALUES ('chus',666666666,'monomacaco@chus.com','1234')

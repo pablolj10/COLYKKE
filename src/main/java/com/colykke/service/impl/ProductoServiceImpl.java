@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.colykke.dto.producto.ProductoRequestDto;
 import com.colykke.dto.producto.ProductoResponseDto;
 import com.colykke.dto.producto.ProductoUpdateRequestDto;
-import com.colykke.dto.vendedor.VendedorNombreResponseDto;
 import com.colykke.entity.Producto;
 import com.colykke.entity.Vendedor;
 import com.colykke.mapper.ProductoMapper;
@@ -37,8 +36,7 @@ public class ProductoServiceImpl implements ProductoService {
 			throw new IllegalArgumentException("No existe un producto con ese id");
 		}
 		ProductoResponseDto productoDto = productoMapper.mapToProductoResponseDto(productoOptional.get());
-		VendedorNombreResponseDto vendedorDto = vendedorMapper.mapVendedorToVendedorNombreResponseDto(productoOptional.get().getVendedor());
-		productoDto.setVendedorNombre(vendedorDto);
+		productoDto.setVendedorNombre(productoOptional.get().getVendedor().getNombre());
 		return productoDto;
 	}
 	
@@ -48,8 +46,7 @@ public class ProductoServiceImpl implements ProductoService {
 		List<ProductoResponseDto> productosDto = productoMapper.mapToProductoDto(productos);
 		int i =0;
 		for(ProductoResponseDto p: productosDto) {
-			VendedorNombreResponseDto vendedorDto = vendedorMapper.mapVendedorToVendedorNombreResponseDto(productos.get(i).getVendedor());
-			p.setVendedorNombre(vendedorDto);
+			p.setVendedorNombre(productos.get(i).getVendedor().getNombre());
 			i++;
 		}
 		return productosDto;
@@ -64,7 +61,9 @@ public class ProductoServiceImpl implements ProductoService {
 		Optional<Vendedor> vendedor = vendedorRepository.findById(id);
 		producto.setVendedor(vendedor.get());
 		productoRepository.save(producto);
-		return productoMapper.mapProductoRequestDtoToProductoResponseDto(dto);
+		ProductoResponseDto p = productoMapper.mapProductoRequestDtoToProductoResponseDto(dto);
+		p.setVendedorNombre(vendedor.get().getNombre());
+		return p;
 	}
 
 	@Override
@@ -73,10 +72,11 @@ public class ProductoServiceImpl implements ProductoService {
 
 		if (productoOptional.isPresent()) {
 			Producto producto = productoMapper.mapToProducto(id, dto);
-
+			producto.setVendedor(productoOptional.get().getVendedor());
 			productoRepository.save(producto);
-			
-			return productoMapper.mapToProductoResponseDto(productoRepository.findById(id).get());
+			ProductoResponseDto productoDto = productoMapper.mapToProductoResponseDto(productoRepository.findById(id).get());
+			productoDto.setVendedorNombre(producto.getVendedor().getNombre());
+			return productoDto;
 		}
 		log.error("No existe un producto con el id: " + id);
 		throw new IllegalArgumentException("No existe un producto con ese id");

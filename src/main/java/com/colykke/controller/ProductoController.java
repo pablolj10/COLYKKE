@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +21,6 @@ import com.colykke.dto.producto.ProductoUpdateRequestDto;
 import com.colykke.service.ProductoService;
 import com.colykke.util.ResponseUtil;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
@@ -65,7 +65,7 @@ public class ProductoController {
 //    }
 
     @PostMapping()
-    public ResponseEntity<ApiResponse<ProductoResponseDto>> add(@Valid @RequestBody ProductoRequestDto productoDto) {
+    public ResponseEntity<ApiResponse<ProductoResponseDto>> add(@RequestBody ProductoRequestDto productoDto) {
         log.info("Petición para añadir un producto");
         return ResponseUtil.response(productoService.add(productoDto), HttpStatus.CREATED, "Producto creado con exito");
     }

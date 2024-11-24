@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.mapstruct.Mapper;
 
-import com.colykke.dto.vendedor.VendedorNombreResponseDto;
 import com.colykke.dto.vendedor.VendedorRequestDto;
 import com.colykke.dto.vendedor.VendedorResponseDto;
 import com.colykke.entity.Vendedor;
@@ -21,7 +20,5 @@ public interface VendedorMapper {
 	public Vendedor mapToVendedor(Long id, VendedorRequestDto vendedorDto);
 	
 	public VendedorResponseDto mapVendedorRequestDtoToVendedorResponseDto(VendedorRequestDto vendedorDto);
-	
-	public VendedorNombreResponseDto mapVendedorToVendedorNombreResponseDto(Vendedor vendedor);
 	
 }
