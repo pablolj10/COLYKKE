@@ -2,6 +2,8 @@ package com.colykke.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,6 +32,7 @@ public class Cliente {
 	private String contrasenia;
 
 	@OneToMany(targetEntity=Pedido.class,mappedBy="cliente",cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private List<Pedido> pedidos;
 	
 }

@@ -1,5 +1,25 @@
 package com.colykke.dto.pedido;
 
-public class PedidoResponseDto {
+import java.util.List;
 
+import com.colykke.dto.cliente.ClienteResponseDto;
+import com.colykke.dto.contiene.ContieneResponseDto;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+public class PedidoResponseDto {
+	
+	private String fechaRealizado;
+	
+	private String direccion;
+
+	private List<ContieneResponseDto> contiene;
+	
+	private ClienteResponseDto cliente;
+	
 }

@@ -1,5 +1,14 @@
 package com.colykke.repository;
 
-public class PedidoRepository {
+import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.colykke.entity.Pedido;
+
+public interface PedidoRepository extends JpaRepository<Pedido, Long> {
+
+	List<Pedido> findAllByOrderByFechaRealizadoAsc();
+	
+	List<Pedido> findAllByOrderByFechaRealizadoDesc();
 }
