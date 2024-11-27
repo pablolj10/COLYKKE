@@ -15,5 +15,5 @@ public class PedidoRequestDto {
 
 	// private List<Contiene> contiene;
 
-	private Cliente cliente;
+	private int clienteId;
 }

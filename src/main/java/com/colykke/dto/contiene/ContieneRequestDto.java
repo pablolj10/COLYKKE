@@ -9,9 +9,9 @@ import lombok.ToString;
 @ToString
 public class ContieneRequestDto {
 
-	private Long pedidoId;
+	private int pedidoId;
 	
-	private Long productoId;
+	private int productoId;
 	
 	private int cantidad;
 }

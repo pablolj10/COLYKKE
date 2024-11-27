@@ -2,7 +2,7 @@ package com.colykke.dto.vendedor;
 
 import java.util.List;
 
-import com.colykke.entity.Producto;
+import com.colykke.dto.producto.ProductoResponseDto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +20,6 @@ public class VendedorResponseDto {
 	private int telefono;
 	private String info;
 	
-	private List<Producto> productos;
+	private List<ProductoResponseDto> productos;
 	
 }
