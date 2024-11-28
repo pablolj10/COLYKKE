@@ -20,4 +20,6 @@ public interface ContieneMapper {
 	public Contiene mapToContiene(Long id, ContieneRequestDto contieneDto);
 	
 	public ContieneResponseDto mapContieneRequestDtoToContieneResponseDto(ContieneRequestDto contieneDto);
+	
+	
 }

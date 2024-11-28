@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.colykke.dto.ApiResponse;
 import com.colykke.dto.cliente.ClienteRequestDto;
 import com.colykke.dto.cliente.ClienteResponseDto;
+import com.colykke.dto.cliente.ClienteSinPedidosResponseDto;
 import com.colykke.service.ClienteService;
 import com.colykke.util.ResponseUtil;
 
@@ -31,13 +32,13 @@ public class ClienteController {
 	@Autowired private ClienteService clienteService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<ClienteResponseDto>> findById(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<ClienteSinPedidosResponseDto>> findById(@PathVariable Long id) {
         log.info("Peticion para mostrar el cliente con id " + id);
         return ResponseUtil.response(clienteService.findById(id), HttpStatus.OK, "Mostrando el cliente");
     }
 
     @GetMapping
-    public ResponseEntity<ApiResponse<List<ClienteResponseDto>>> findAll() {
+    public ResponseEntity<ApiResponse<List<ClienteSinPedidosResponseDto>>> findAll() {
         log.info("Peticion para mostrar todos los clientes");
         return ResponseUtil.response(clienteService.findAll(), HttpStatus.OK, "Mostrando todos los clientes");
     }

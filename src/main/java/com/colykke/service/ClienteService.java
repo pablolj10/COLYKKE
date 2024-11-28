@@ -4,12 +4,13 @@ import java.util.List;
 
 import com.colykke.dto.cliente.ClienteRequestDto;
 import com.colykke.dto.cliente.ClienteResponseDto;
+import com.colykke.dto.cliente.ClienteSinPedidosResponseDto;
 
 public interface ClienteService {
 
-	ClienteResponseDto findById(Long id);
+	ClienteSinPedidosResponseDto findById(Long id);
 
-	List<ClienteResponseDto> findAll();
+	List<ClienteSinPedidosResponseDto> findAll();
 	
 	ClienteResponseDto add(ClienteRequestDto dto);
 	

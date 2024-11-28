@@ -1,8 +1,5 @@
 package com.colykke.dto.pedido;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-
 import com.colykke.dto.cliente.ClienteSinPedidosResponseDto;
 
 import lombok.Getter;
@@ -14,11 +11,9 @@ import lombok.ToString;
 @ToString
 public class PedidoSinContieneResponseDto {
 
-	private Long id;
+	private String fechaRealizado;
 	
-	private Date fechaRealizado;
-	
-	private LocalDateTime horaReserva;
+	private String direccion;
 	
 	private ClienteSinPedidosResponseDto cliente;
 }

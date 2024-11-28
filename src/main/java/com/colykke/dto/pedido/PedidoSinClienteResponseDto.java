@@ -15,12 +15,10 @@ import lombok.ToString;
 @ToString
 public class PedidoSinClienteResponseDto {
 
-	private Long id;
+	private String fechaRealizado;
 	
-	private Date fechaRealizado;
-	
-	private LocalDateTime horaReserva;
-	
+	private String direccion;
+
 	private List<ContieneResponseDto> contiene;
 	
 }

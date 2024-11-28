@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.colykke.dto.cliente.ClienteRequestDto;
 import com.colykke.dto.cliente.ClienteResponseDto;
+import com.colykke.dto.cliente.ClienteSinPedidosResponseDto;
 import com.colykke.entity.Cliente;
 import com.colykke.mapper.ClienteMapper;
 import com.colykke.repository.ClienteRepository;
@@ -23,7 +24,7 @@ public class ClienteServiceImpl implements ClienteService {
 	@Autowired ClienteMapper clienteMapper;
 
 	@Override
-	public ClienteResponseDto findById(Long id) {
+	public ClienteSinPedidosResponseDto findById(Long id) {
 		
 		Optional<Cliente> clienteOptional = clienteRepository.findById(id);
 
@@ -31,13 +32,13 @@ public class ClienteServiceImpl implements ClienteService {
 			log.error("No existe un cliente con el id: " + id);
 			throw new IllegalArgumentException("No existe un cliente con ese id");
 		}
-		return clienteMapper.mapToClienteDto(clienteOptional.get());
+		return clienteMapper.mapToClienteSPDto(clienteOptional.get());
 	}
 
 	@Override
-	public List<ClienteResponseDto> findAll() {
+	public List<ClienteSinPedidosResponseDto> findAll() {
 		List<Cliente> clientes = clienteRepository.findAll();
-		return clienteMapper.mapToClienteDto(clientes);
+		return clienteMapper.mapToClienteSPDto(clientes);
 	}
 
 	

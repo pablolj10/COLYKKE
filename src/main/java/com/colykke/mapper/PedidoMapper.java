@@ -6,6 +6,7 @@ import org.mapstruct.Mapper;
 
 import com.colykke.dto.pedido.PedidoRequestDto;
 import com.colykke.dto.pedido.PedidoResponseDto;
+import com.colykke.dto.pedido.PedidoSinContieneResponseDto;
 import com.colykke.entity.Pedido;
 
 @Mapper(componentModel="spring")
@@ -20,4 +21,8 @@ public interface PedidoMapper {
 	public Pedido mapToPedido(Long id, PedidoRequestDto pedidoDto);
 	
 	public PedidoResponseDto mapPedidoRequestDtoToPedidoResponseDto(PedidoRequestDto pedidoDto);
+	
+	public PedidoSinContieneResponseDto mapToPedidoSCResponseDto(Pedido pedido);
+	
+	public List<PedidoSinContieneResponseDto> mapToPedidoSCResponseDto(List<Pedido> pedido);
 }

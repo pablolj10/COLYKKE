@@ -6,6 +6,7 @@ import org.mapstruct.Mapper;
 
 import com.colykke.dto.cliente.ClienteRequestDto;
 import com.colykke.dto.cliente.ClienteResponseDto;
+import com.colykke.dto.cliente.ClienteSinPedidosResponseDto;
 import com.colykke.entity.Cliente;
 
 @Mapper(componentModel="spring")
@@ -21,4 +22,7 @@ public interface ClienteMapper {
 	
 	public ClienteResponseDto mapClienteRequestDtoToClienteResponseDto(ClienteRequestDto clienteDto);
 	
+	public ClienteSinPedidosResponseDto mapToClienteSPDto(Cliente cliente);
+	
+	public List<ClienteSinPedidosResponseDto> mapToClienteSPDto(List<Cliente> clientes);
 }

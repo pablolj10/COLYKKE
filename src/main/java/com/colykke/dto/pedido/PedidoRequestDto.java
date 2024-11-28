@@ -1,7 +1,5 @@
 package com.colykke.dto.pedido;
 
-import com.colykke.entity.Cliente;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,9 +9,9 @@ import lombok.ToString;
 @ToString
 public class PedidoRequestDto {
 	
+	private String fechaRealizado;
+	
 	private String direccion;
-
-	// private List<Contiene> contiene;
 
 	private int clienteId;
 }
