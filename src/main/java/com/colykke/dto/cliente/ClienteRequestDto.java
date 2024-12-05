@@ -11,7 +11,6 @@ import lombok.ToString;
 public class ClienteRequestDto {
 
 	private String nombre;
-	private int telefono;
 	@Column(name="correo_electronico")
 	private String correoElectronico;
 	private String contrasenia;

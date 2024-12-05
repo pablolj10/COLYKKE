@@ -1,9 +1,5 @@
 package com.colykke.dto.vendedor;
 
-import java.util.List;
-
-import com.colykke.dto.producto.ProductoResponseDto;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class VendedorResponseDto {
+public class VendedorSinProductosResponseDto {
 
 	private long id;
 	
@@ -21,7 +17,4 @@ public class VendedorResponseDto {
 	private String logo;
 	private int telefono;
 	private String info;
-	
-	private List<ProductoResponseDto> productos;
-	
 }

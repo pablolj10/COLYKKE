@@ -26,7 +26,6 @@ public class Cliente {
 	private long id;
 	
 	private String nombre;
-	private int telefono;
 	@Column(name="correo_electronico")
 	private String correoElectronico;
 	private String contrasenia;

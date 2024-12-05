@@ -22,6 +22,8 @@ public interface ClienteMapper {
 	
 	public ClienteResponseDto mapClienteRequestDtoToClienteResponseDto(ClienteRequestDto clienteDto);
 	
+	public ClienteSinPedidosResponseDto mapClienteRequestDtoToClienteSinPedidosResponseDto(ClienteRequestDto clienteDto);
+	
 	public ClienteSinPedidosResponseDto mapToClienteSPDto(Cliente cliente);
 	
 	public List<ClienteSinPedidosResponseDto> mapToClienteSPDto(List<Cliente> clientes);

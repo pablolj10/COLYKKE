@@ -8,13 +8,13 @@ import com.colykke.dto.cliente.ClienteSinPedidosResponseDto;
 
 public interface ClienteService {
 
-	ClienteSinPedidosResponseDto findById(Long id);
+	ClienteResponseDto findById(Long id);
 
-	List<ClienteSinPedidosResponseDto> findAll();
+	List<ClienteResponseDto> findAll();
 	
-	ClienteResponseDto add(ClienteRequestDto dto);
+	ClienteSinPedidosResponseDto add(ClienteRequestDto dto);
 	
-	ClienteResponseDto update(Long id, ClienteRequestDto dto);
+	ClienteSinPedidosResponseDto update(Long id, ClienteRequestDto dto);
 	
 	void delete(Long id);
 	

@@ -1,10 +1,6 @@
 package com.colykke.dto.pedido;
 
-import java.util.List;
-
-import com.colykke.dto.cliente.ClienteResponseDto;
 import com.colykke.dto.cliente.ClienteSinPedidosResponseDto;
-import com.colykke.dto.contiene.ContieneResponseDto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +10,8 @@ import lombok.ToString;
 @Setter
 @ToString
 public class PedidoResponseDto {
+	
+	private long id;
 	
 	private String fechaRealizado;
 	

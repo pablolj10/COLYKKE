@@ -24,7 +24,7 @@ public class ClienteServiceImpl implements ClienteService {
 	@Autowired ClienteMapper clienteMapper;
 
 	@Override
-	public ClienteSinPedidosResponseDto findById(Long id) {
+	public ClienteResponseDto findById(Long id) {
 		
 		Optional<Cliente> clienteOptional = clienteRepository.findById(id);
 
@@ -32,25 +32,25 @@ public class ClienteServiceImpl implements ClienteService {
 			log.error("No existe un cliente con el id: " + id);
 			throw new IllegalArgumentException("No existe un cliente con ese id");
 		}
-		return clienteMapper.mapToClienteSPDto(clienteOptional.get());
+		return clienteMapper.mapToClienteDto(clienteOptional.get());
 	}
 
 	@Override
-	public List<ClienteSinPedidosResponseDto> findAll() {
+	public List<ClienteResponseDto> findAll() {
 		List<Cliente> clientes = clienteRepository.findAll();
-		return clienteMapper.mapToClienteSPDto(clientes);
+		return clienteMapper.mapToClienteDto(clientes);
 	}
 
 	
 
 	@Override
-	public ClienteResponseDto add(ClienteRequestDto dto) {
+	public ClienteSinPedidosResponseDto add(ClienteRequestDto dto) {
 		clienteRepository.save(clienteMapper.mapClienteRequestDtoToCliente(dto));
-		return clienteMapper.mapClienteRequestDtoToClienteResponseDto(dto);
+		return clienteMapper.mapClienteRequestDtoToClienteSinPedidosResponseDto(dto);
 	}
 
 	@Override
-	public ClienteResponseDto update(Long id, ClienteRequestDto dto) {
+	public ClienteSinPedidosResponseDto update(Long id, ClienteRequestDto dto) {
 		Optional<Cliente> clienteOptional = clienteRepository.findById(id);
 
 		if (clienteOptional.isPresent()) {
@@ -58,7 +58,7 @@ public class ClienteServiceImpl implements ClienteService {
 
 			clienteRepository.save(cliente);
 
-			return clienteMapper.mapClienteRequestDtoToClienteResponseDto(dto);
+			return clienteMapper.mapClienteRequestDtoToClienteSinPedidosResponseDto(dto);
 		}
 		log.error("No existe un cliente con el id: " + id);
 		throw new IllegalArgumentException("No existe un cliente con ese id");

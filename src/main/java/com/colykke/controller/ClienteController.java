@@ -32,25 +32,25 @@ public class ClienteController {
 	@Autowired private ClienteService clienteService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<ClienteSinPedidosResponseDto>> findById(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<ClienteResponseDto>> findById(@PathVariable Long id) {
         log.info("Peticion para mostrar el cliente con id " + id);
         return ResponseUtil.response(clienteService.findById(id), HttpStatus.OK, "Mostrando el cliente");
     }
 
     @GetMapping
-    public ResponseEntity<ApiResponse<List<ClienteSinPedidosResponseDto>>> findAll() {
+    public ResponseEntity<ApiResponse<List<ClienteResponseDto>>> findAll() {
         log.info("Peticion para mostrar todos los clientes");
         return ResponseUtil.response(clienteService.findAll(), HttpStatus.OK, "Mostrando todos los clientes");
     }
 
     @PostMapping
-    public ResponseEntity<ApiResponse<ClienteResponseDto>> add(@RequestBody ClienteRequestDto dto) {
+    public ResponseEntity<ApiResponse<ClienteSinPedidosResponseDto>> add(@RequestBody ClienteRequestDto dto) {
         log.info("Peticion para añadir un cliente");
         return ResponseUtil.response(clienteService.add(dto), HttpStatus.CREATED, "Cliente creado con exito");
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ApiResponse<ClienteResponseDto>> update(@PathVariable Long id, @RequestBody ClienteRequestDto dto) {
+    public ResponseEntity<ApiResponse<ClienteSinPedidosResponseDto>> update(@PathVariable Long id, @RequestBody ClienteRequestDto dto) {
         log.info("Peticion para actualizar un cliente con el id " + id);
         return ResponseUtil.response(clienteService.update(id, dto), HttpStatus.OK, "Cliente actualizado con exito");
     }

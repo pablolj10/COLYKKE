@@ -11,6 +11,8 @@ import lombok.ToString;
 @ToString
 public class PedidoSinContieneResponseDto {
 
+	private long id;
+	
 	private String fechaRealizado;
 	
 	private String direccion;

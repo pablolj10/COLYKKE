@@ -36,7 +36,6 @@ public class ProductoServiceImpl implements ProductoService {
 			throw new IllegalArgumentException("No existe un producto con ese id");
 		}
 		ProductoResponseDto productoDto = productoMapper.mapToProductoResponseDto(productoOptional.get());
-		productoDto.setVendedorNombre(productoOptional.get().getVendedor().getNombre());
 		return productoDto;
 	}
 	
@@ -44,11 +43,6 @@ public class ProductoServiceImpl implements ProductoService {
 	public List<ProductoResponseDto> findAll() {
 		List<Producto> productos = productoRepository.findAll();
 		List<ProductoResponseDto> productosDto = productoMapper.mapToProductoDto(productos);
-		int i =0;
-		for(ProductoResponseDto p: productosDto) {
-			p.setVendedorNombre(productos.get(i).getVendedor().getNombre());
-			i++;
-		}
 		return productosDto;
 	}
 
@@ -62,7 +56,6 @@ public class ProductoServiceImpl implements ProductoService {
 		producto.setVendedor(vendedor.get());
 		productoRepository.save(producto);
 		ProductoResponseDto p = productoMapper.mapProductoRequestDtoToProductoResponseDto(dto);
-		p.setVendedorNombre(vendedor.get().getNombre());
 		return p;
 	}
 
@@ -75,7 +68,6 @@ public class ProductoServiceImpl implements ProductoService {
 			producto.setVendedor(productoOptional.get().getVendedor());
 			productoRepository.save(producto);
 			ProductoResponseDto productoDto = productoMapper.mapToProductoResponseDto(productoRepository.findById(id).get());
-			productoDto.setVendedorNombre(producto.getVendedor().getNombre());
 			return productoDto;
 		}
 		log.error("No existe un producto con el id: " + id);
