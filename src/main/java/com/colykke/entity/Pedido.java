@@ -1,5 +1,7 @@
 package com.colykke.entity;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -14,6 +16,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -24,12 +28,18 @@ import lombok.ToString;
 @ToString
 public class Pedido {
 
+	
+	public Pedido() {
+		this.fechaRealizado = Calendar.getInstance().getTime();
+	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
 	@Column(name="fecha_realizado")
-	private String fechaRealizado;
+	@Temporal(TemporalType.DATE)
+	private Date fechaRealizado;
 	
 	private String direccion;
 	

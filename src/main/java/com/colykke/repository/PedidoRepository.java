@@ -11,4 +11,8 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 	List<Pedido> findAllByOrderByFechaRealizadoAsc();
 	
 	List<Pedido> findAllByOrderByFechaRealizadoDesc();
+	
+	List<Pedido> findByClienteUsuarioEmail(String email);
+	
+	List<Pedido> findDistinctByContieneProductoId(Long productoId);
 }

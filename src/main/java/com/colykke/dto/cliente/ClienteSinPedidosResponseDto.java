@@ -1,5 +1,8 @@
 package com.colykke.dto.cliente;
 
+
+import com.colykke.dto.usuario.UsuarioResponseDto;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -12,7 +15,7 @@ public class ClienteSinPedidosResponseDto {
 	private long id;
 	
 	private String nombre;
-	private String correoElectronico;
-	private String contrasenia;
+
+	private UsuarioResponseDto usuario;
 	
 }

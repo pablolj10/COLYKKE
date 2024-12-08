@@ -1,5 +1,7 @@
 package com.colykke.dto.pedido;
 
+import java.util.Date;
+
 import com.colykke.dto.cliente.ClienteSinPedidosResponseDto;
 
 import lombok.Getter;
@@ -13,7 +15,7 @@ public class PedidoSinContieneResponseDto {
 
 	private long id;
 	
-	private String fechaRealizado;
+	private Date fechaRealizado;
 	
 	private String direccion;
 	

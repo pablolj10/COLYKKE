@@ -1,5 +1,8 @@
 package com.colykke.dto.cliente;
 
+
+import com.colykke.dto.usuario.UsuarioRequestDto;
+
 import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +14,8 @@ import lombok.ToString;
 public class ClienteRequestDto {
 
 	private String nombre;
-	@Column(name="correo_electronico")
-	private String correoElectronico;
-	private String contrasenia;
+
+	private UsuarioRequestDto usuario;
 
 	
 }

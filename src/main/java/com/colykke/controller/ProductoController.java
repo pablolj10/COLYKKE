@@ -57,13 +57,6 @@ public class ProductoController {
         return ResponseUtil.response(productoService.findAllByOrderByPrecioDesc(), HttpStatus.OK, "Mostrando todos los productos ordenados por precio de forma descendente");
     }
 
-//    @Operation(summary = "Buscar los platos por categoria", description = "Buscar todos los platos de la base de datos pertenencientes a la categoria introducida.", tags = {"plato", "get"})
-//    @GetMapping("categoria/{categoria}")
-//    public ResponseEntity<ApiResponse<List<PlatoResponseDto>>> findPlatosByCategoria(@PathVariable Long categoria) {
-//        log.info("Petición para mostrar los platos ordenados por la categoria " + categoria);
-//        return ResponseUtil.response(service.findPlatosByCategoria(categoria), HttpStatus.ACCEPTED, "Mostrando los platos ordenados por la categoria " + categoria);
-//    }
-
     @PostMapping()
     public ResponseEntity<ApiResponse<ProductoResponseDto>> add(@RequestBody ProductoRequestDto productoDto) {
         log.info("Petición para añadir un producto");

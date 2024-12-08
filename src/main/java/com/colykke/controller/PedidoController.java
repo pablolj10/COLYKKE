@@ -20,6 +20,7 @@ import com.colykke.dto.pedido.PedidoResponseDto;
 import com.colykke.service.PedidoService;
 import com.colykke.util.ResponseUtil;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -39,6 +40,30 @@ public class PedidoController {
     public ResponseEntity<ApiResponse<List<PedidoResponseDto>>> findAll() {
         log.info("Peticion para mostrar todos los pedidos");
         return ResponseUtil.response(service.findAll(), HttpStatus.OK, "Mostrando todos los pedidos");
+    }
+    
+    @GetMapping("/usuario/{email}")
+    public ResponseEntity<ApiResponse<List<PedidoResponseDto>>> findByClienteUsuarioEmail(@PathVariable String email) {
+        log.info("Peticion para mostrar los pedidos del usuario con el email " + email);
+        return ResponseUtil.response(service.findByClienteUsuarioEmail(email), HttpStatus.ACCEPTED, "Mostrando v");
+    }
+    
+    @GetMapping("/producto/{idProducto}")
+    public ResponseEntity<ApiResponse<List<PedidoResponseDto>>> findDistinctByContieneProductoId(@PathVariable Long idProducto) {
+        log.info("Peticion para mostrar los pedidos que contengan el plato con id " + idProducto);
+        return ResponseUtil.response(service.findDistinctByContieneProductoId(idProducto), HttpStatus.ACCEPTED, "Mostrando los pedidos");
+    }
+    
+    @GetMapping("/fecha/asc")
+    public ResponseEntity<ApiResponse<List<PedidoResponseDto>>> findAllByOrderByFechaRealizadoAsc() {
+        log.info("Petición para mostrar todos los pedidos ordenados por fecha de manera ascendente");
+        return ResponseUtil.response(service.findAllByOrderByFechaRealizadoAsc(), HttpStatus.ACCEPTED, "Mostrando todos los pedidos ordenados por fecha de manera ascendente");
+    }
+    
+    @GetMapping("/fecha/desc")
+    public ResponseEntity<ApiResponse<List<PedidoResponseDto>>> findAllByOrderByFechaRealizadoDesc() {
+        log.info("Petición para mostrar todos los pedidos");
+        return ResponseUtil.response(service.findAllByOrderByFechaRealizadoDesc(), HttpStatus.ACCEPTED, "Mostrando todos los pedidos ordenados por fecha de manera descendente");
     }
 
     @PostMapping()

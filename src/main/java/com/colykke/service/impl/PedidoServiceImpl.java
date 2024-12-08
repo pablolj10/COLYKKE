@@ -55,8 +55,30 @@ public class PedidoServiceImpl implements PedidoService {
 		return pedidoMapper.mapToPedidoDto(pedidos);
 	}
 
+	@Override
+	public List<PedidoResponseDto> findAllByOrderByFechaRealizadoAsc() {
+		List<Pedido> pedidos = pedidoRepository.findAllByOrderByFechaRealizadoAsc();
+		return pedidoMapper.mapToPedidoDto(pedidos);
+	}
 	
+	@Override
+	public List<PedidoResponseDto> findAllByOrderByFechaRealizadoDesc() {
+		List<Pedido> pedidos = pedidoRepository.findAllByOrderByFechaRealizadoDesc();
+		return pedidoMapper.mapToPedidoDto(pedidos);
+	}
 
+	@Override
+	public List<PedidoResponseDto> findByClienteUsuarioEmail(String email) {
+		List<Pedido> pedidos = pedidoRepository.findByClienteUsuarioEmail(email);
+		return pedidoMapper.mapToPedidoDto(pedidos);
+	}
+	
+	@Override
+	public List<PedidoResponseDto> findDistinctByContieneProductoId(Long idProducto) {
+		List<Pedido> pedidos = pedidoRepository.findDistinctByContieneProductoId(idProducto);
+		return pedidoMapper.mapToPedidoDto(pedidos);
+	}
+	
 	@Override
 	public PedidoResponseDto add(PedidoRequestDto dto) {
 		

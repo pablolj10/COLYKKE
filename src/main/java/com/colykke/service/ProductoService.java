@@ -15,9 +15,7 @@ public interface ProductoService {
 	public List<ProductoResponseDto> findAllByOrderByPrecioAsc();
 	
 	public List<ProductoResponseDto> findAllByOrderByPrecioDesc();
-	
-//	public List<PlatoResponseDto> findPlatosByCategoria(Long categoria);
-	
+		
 	ProductoResponseDto add(ProductoRequestDto dto);
 
 	ProductoResponseDto update(Long id, ProductoUpdateRequestDto dto);

@@ -1,6 +1,5 @@
 package com.colykke.dto.pedido;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class PedidoSinClienteResponseDto {
 
 	private long id;
 	
-	private String fechaRealizado;
+	private Date fechaRealizado;
 	
 	private String direccion;
 

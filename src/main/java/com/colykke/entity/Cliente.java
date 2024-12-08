@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -26,10 +27,10 @@ public class Cliente {
 	private long id;
 	
 	private String nombre;
-	@Column(name="correo_electronico")
-	private String correoElectronico;
-	private String contrasenia;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	private Usuario usuario;
+	
 	@OneToMany(targetEntity=Pedido.class,mappedBy="cliente",cascade = CascadeType.ALL)
 	@JsonManagedReference
 	private List<Pedido> pedidos;

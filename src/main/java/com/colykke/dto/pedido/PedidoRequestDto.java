@@ -1,5 +1,7 @@
 package com.colykke.dto.pedido;
 
+import java.util.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -8,9 +10,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class PedidoRequestDto {
-	
-	private String fechaRealizado;
-	
+		
 	private String direccion;
 
 	private int clienteId;

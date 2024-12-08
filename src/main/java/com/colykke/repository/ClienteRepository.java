@@ -9,10 +9,11 @@ import com.colykke.entity.Cliente;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
-//List<Cliente> findAllByOrderByCountByPedidosAsc();
+	@Query("SELECT c FROM Cliente c LEFT JOIN c.pedidos p GROUP BY c.id ORDER BY COUNT(p) ASC")
+    List<Cliente> findAllOrderByNumeroDePedidosAsc();
 	
-	 @Query("SELECT c FROM Cliente c LEFT JOIN c.pedidos p GROUP BY c.id ORDER BY COUNT(p) DESC")
-	List<Cliente> findAllByOrderByCountByPedidosDesc();
-
+	@Query("SELECT c FROM Cliente c LEFT JOIN c.pedidos p GROUP BY c.id ORDER BY COUNT(p) DESC")
+    List<Cliente> findAllOrderByNumeroDePedidosDesc();
 	
+	Cliente findByUsuarioId(Long id);
 }

@@ -1,3 +1,8 @@
+insert into usuario(email,username,password,rol) values ('alejandrobp2004@gmail.com','jandro','$2a$12$PYUpifu7G2NfFE3peSoy7OIywY4fytGKHcJHoGidtfQYV1lJjwqTW','ADMIN');
+insert into usuario(email,username,password,rol) values ('maribalo043@gmail.com','mario','$2a$12$ZNJVVpCuZHLMgSMPRoMa1eJSajHEyWTfBUEw6VEQVOhmo0O/TScG6','USER');
+insert into usuario(email,username,password,rol) values ('fifaplj2003@gmail.com','pablo','$2a$12$qGNAI1N4UIF4.GYLCsxGMOrWpzIfTQUdIpEBM9pxfxLmg41/GeF.W','USER');
+insert into usuario(email,username,password,rol) values ('luisfelguera9@gmail.com','luis','$2a$12$EaTPCG3PUhoozm1ImcB.bevHXZEsWzdFvqqx3SAHDLWOgTRHRKSdO','USER');
+
 INSERT INTO vendedor(nombre,correo_electronico,contrasenia,telefono,logo,info) values ('HOLA','HOLA','HOLA',1,'HOLA','HOLA');
 INSERT INTO vendedor(nombre,correo_electronico,contrasenia,telefono,logo,info) values ('HOLA_1','HOLA_1','HOLA_1',1,'HOLA_1','HOLA_1');
 INSERT INTO vendedor(nombre,correo_electronico,contrasenia,telefono,logo,info) values ('HOLA_2','HOLA_2','HOLA_2',1,'HOLA_2','HOLA_2');
@@ -10,14 +15,14 @@ INSERT INTO producto(nombre,descripcion,color,precio,imagen,FK_VENDEDOR) VALUES 
 INSERT INTO producto(nombre,descripcion,color,precio,imagen,FK_VENDEDOR) VALUES ('prueba4','prueba4','prueba4',4.49,'prueba4',3);
 INSERT INTO producto(nombre,descripcion,color,precio,imagen,FK_VENDEDOR) VALUES ('prueba5','prueba5','prueba5',0.10,'prueba5',1);
 
-INSERT INTO cliente(nombre,correo_electronico,contrasenia) VALUES ('chus','monomacaco@chus.com','1234');
-INSERT INTO cliente(nombre,correo_electronico,contrasenia) VALUES ('gordi','obesobola@gordi.com','5678');
+INSERT INTO cliente(nombre,usuario_id) VALUES ('chus',2);
+INSERT INTO cliente(nombre,usuario_id) VALUES ('gordi',1);
 
-INSERT INTO pedido(fecha_realizado, direccion, FK_CLIENTE) VALUES ('01/01/2001', 'C/ Prueba - nº1 - 1A', 1);
-INSERT INTO pedido(fecha_realizado, direccion, FK_CLIENTE) VALUES ('02/02/2002', 'C/ Prueba1 - nº11 - 2B', 2);
-INSERT INTO pedido(fecha_realizado, direccion, FK_CLIENTE) VALUES ('03/03/2003', 'C/ Prueba2 - nº111 - 3C', 1);
-INSERT INTO pedido(fecha_realizado, direccion, FK_CLIENTE) VALUES ('04/04/2004', 'C/ Prueba3 - nº1111 - 4D', 1);
-INSERT INTO pedido(fecha_realizado, direccion, FK_CLIENTE) VALUES ('05/05/2005', 'C/ Prueba4 - nº11111 - 5E', 2);
+INSERT INTO pedido(fecha_realizado, direccion, FK_CLIENTE) VALUES ('2024-12-10', 'C/ Prueba - nº1 - 1A', 1);
+INSERT INTO pedido(fecha_realizado, direccion, FK_CLIENTE) VALUES ('2024-12-12', 'C/ Prueba1 - nº11 - 2B', 2);
+INSERT INTO pedido(fecha_realizado, direccion, FK_CLIENTE) VALUES ('2024-12-14', 'C/ Prueba2 - nº111 - 3C', 1);
+INSERT INTO pedido(fecha_realizado, direccion, FK_CLIENTE) VALUES ('2024-12-13', 'C/ Prueba3 - nº1111 - 4D', 1);
+INSERT INTO pedido(fecha_realizado, direccion, FK_CLIENTE) VALUES ('2024-12-15', 'C/ Prueba4 - nº11111 - 5E', 2);
 
 INSERT INTO contiene(pedido_id, producto_id, cantidad) VALUES (1, 1, 1);
 INSERT INTO contiene(pedido_id, producto_id, cantidad) VALUES (1, 2, 1);
