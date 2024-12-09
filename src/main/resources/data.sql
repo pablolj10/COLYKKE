@@ -2,10 +2,11 @@ insert into usuario(email,username,password,rol) values ('alejandrobp2004@gmail.
 insert into usuario(email,username,password,rol) values ('maribalo043@gmail.com','mario','$2a$12$ZNJVVpCuZHLMgSMPRoMa1eJSajHEyWTfBUEw6VEQVOhmo0O/TScG6','USER');
 insert into usuario(email,username,password,rol) values ('fifaplj2003@gmail.com','pablo','$2a$12$qGNAI1N4UIF4.GYLCsxGMOrWpzIfTQUdIpEBM9pxfxLmg41/GeF.W','USER');
 insert into usuario(email,username,password,rol) values ('luisfelguera9@gmail.com','luis','$2a$12$EaTPCG3PUhoozm1ImcB.bevHXZEsWzdFvqqx3SAHDLWOgTRHRKSdO','USER');
+insert into usuario(email,username,password,rol) values ('luisguera9@gmail.com','luis2','$2a$12$EaTPCG3PUhoozm1ImcB.bevHXZEsWzdFvqqx3SAHDLWOgTRHRKSdO','USER');
 
-INSERT INTO vendedor(nombre,correo_electronico,contrasenia,telefono,logo,info) values ('HOLA','HOLA','HOLA',1,'HOLA','HOLA');
-INSERT INTO vendedor(nombre,correo_electronico,contrasenia,telefono,logo,info) values ('HOLA_1','HOLA_1','HOLA_1',1,'HOLA_1','HOLA_1');
-INSERT INTO vendedor(nombre,correo_electronico,contrasenia,telefono,logo,info) values ('HOLA_2','HOLA_2','HOLA_2',1,'HOLA_2','HOLA_2');
+INSERT INTO vendedor(nombre,telefono,logo,info,usuario_id) values ('HOLA',1,'HOLA','HOLA',3);
+INSERT INTO vendedor(nombre,telefono,logo,info,usuario_id) values ('HOLA_1',1,'HOLA_1','HOLA_1',5);
+INSERT INTO vendedor(nombre,telefono,logo,info,usuario_id) values ('HOLA_2',1,'HOLA_2','HOLA_2',4);
 
 
 INSERT INTO producto(nombre,descripcion,color,precio,imagen,FK_VENDEDOR) VALUES ('prueba','prueba','prueba',0.99,'prueba',1);

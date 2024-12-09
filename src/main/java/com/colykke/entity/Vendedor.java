@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -27,13 +28,13 @@ public class Vendedor {
 	private long id;
 	
 	private String nombre;
-	@Column(name="correo_electronico")
-	private String correoElectronico;
-	private String contrasenia;
 	private String logo;
 	private int telefono;
 	private String info;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	private Usuario usuario;
+	
 	@OneToMany(targetEntity=Producto.class,mappedBy="vendedor",cascade = CascadeType.ALL)
 	@JsonBackReference
 	private List<Producto> productos;	
