@@ -27,6 +27,7 @@ public class SecurityConfig {
 				.authorizeHttpRequests(authRequest -> authRequest
 						.requestMatchers("/**","/**/**","/**/**/**").permitAll()
 				)
+				.headers(headers -> headers .frameOptions(frameOptions -> frameOptions.sameOrigin()) )
 				.sessionManagement(sessionManager -> sessionManager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authenticationProvider(authProvider)
 				.logout(logout -> logout.permitAll());

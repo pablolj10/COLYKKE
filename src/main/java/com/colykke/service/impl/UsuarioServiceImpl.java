@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.colykke.dto.usuario.UsuarioRequestDto;
@@ -28,6 +29,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Autowired
 	ClienteRepository clienteRepository;
+	
+	 @Autowired
+	 PasswordEncoder bcryptPasswordEncoder;
 	
 	@Override
 	public UsuarioResponseDto findById(Long id) {
@@ -55,12 +59,14 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	public UsuarioResponseDto add(UsuarioRequestDto dto) {
+		dto.setPassword(bcryptPasswordEncoder.encode(dto.getPassword()));
 		usuarioRepository.save(usuarioMapper.mapUsuarioRequestDtoToUsuario(dto));
 		return usuarioMapper.mapUsuarioRequestDtoToUsuarioResponseDto(dto);
 	}
 
 	@Override
 	public UsuarioResponseDto update(Long id, UsuarioRequestDto dto) {
+		dto.setPassword(bcryptPasswordEncoder.encode(dto.getPassword()));
 		Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
 
 		if (usuarioOptional.isPresent()) {
