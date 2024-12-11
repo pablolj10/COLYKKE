@@ -20,7 +20,6 @@ import com.colykke.dto.pedido.PedidoResponseDto;
 import com.colykke.service.PedidoService;
 import com.colykke.util.ResponseUtil;
 
-import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController

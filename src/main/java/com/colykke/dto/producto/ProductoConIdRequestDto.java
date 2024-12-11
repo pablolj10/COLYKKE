@@ -7,12 +7,13 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ProductoRequestDto {
+public class ProductoConIdRequestDto {
 	
+	private long id;
 	private String nombre;
 	private String descripcion;
 	private String color;
 	private float precio;
 	private String imagen;
-	private long vendedorId;
+	private int vendedorId;
 }

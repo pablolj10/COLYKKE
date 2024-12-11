@@ -1,6 +1,8 @@
 package com.colykke.dto.pedido;
 
-import java.util.Date;
+import java.util.List;
+
+import com.colykke.dto.contiene.ContieneRequestDto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,5 +15,7 @@ public class PedidoRequestDto {
 		
 	private String direccion;
 
-	private int clienteId;
+	private long clienteId;
+	
+	private List<ContieneRequestDto> contiene;
 }

@@ -11,9 +11,9 @@ public interface ContieneService {
 
 	List<ContieneResponseDto> findAll();
 	
-	ContieneResponseDto add(ContieneRequestDto dto);
-
-	ContieneResponseDto update(Long id, ContieneRequestDto dto);
+//	ContieneResponseDto add(ContieneRequestDto dto);
+//
+//	ContieneResponseDto update(Long id, ContieneRequestDto dto);
 
 	
 	void delete(Long id);

@@ -16,5 +16,5 @@ public class VendedorRequestDto {
 	private int telefono;
 	private String info;
 	
-	private UsuarioRequestDto usuario;
+	private long usuarioId;
 }

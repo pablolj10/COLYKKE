@@ -9,6 +9,8 @@ import lombok.ToString;
 @ToString
 public class UsuarioRequestDto {
 	
+	private Long id;
+	
 	private String email;
 	
 	private String username;

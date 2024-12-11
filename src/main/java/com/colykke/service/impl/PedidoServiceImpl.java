@@ -79,23 +79,33 @@ public class PedidoServiceImpl implements PedidoService {
 		return pedidoMapper.mapToPedidoDto(pedidos);
 	}
 	
+
 	@Override
 	public PedidoResponseDto add(PedidoRequestDto dto) {
 		
 		Pedido pedido = new Pedido();
 	        
-        Optional<Cliente> cliente = clienteRepository.findById((long) dto.getClienteId());
+        Optional<Cliente> cliente = clienteRepository.findById(dto.getClienteId());
         
         pedido.setCliente(cliente.get());
+       
+        pedido.setDireccion(dto.getDireccion());
+        
+        List<Contiene> contieneList = new ArrayList<>();
+        for (ContieneRequestDto contieneRequestDto : dto.getContiene()) {
+            Contiene contiene = new Contiene();
+            Optional<Producto> producto = productoRepository.findById(contieneRequestDto.getProductoId());
+            
+            contiene.setProducto(producto.get());
+            contiene.setCantidad(contieneRequestDto.getCantidad());
+            contiene.setPedido(pedido);
+            contieneList.add(contiene);
+        }
+        pedido.setContiene(contieneList);
 
-        pedidoRepository.save(pedido);
+        Pedido savedPedido = pedidoRepository.save(pedido);
         
-        PedidoResponseDto response = pedidoMapper.mapPedidoRequestDtoToPedidoResponseDto(dto);
-        
-        response.setCliente(clienteMapper.mapToClienteSPDto(cliente.get()));
-        
-        return response;
-
+        return pedidoMapper.mapToPedidoDto(pedido);
 	}
 
 	@Override
@@ -103,22 +113,32 @@ public class PedidoServiceImpl implements PedidoService {
 		
 		Pedido pedido = pedidoRepository.findById(id).get();
 
-		Optional<Cliente> cliente = clienteRepository.findById((long) dto.getClienteId());
+		Optional<Cliente> cliente = clienteRepository.findById(dto.getClienteId());
         
         pedido.setCliente(cliente.get());
+        pedido.setDireccion(dto.getDireccion());
         
         for(Contiene c: pedido.getContiene()) {
         	c.setPedido(null);
         }
         pedido.setContiene(null);
+        
+        List<Contiene> contieneList = new ArrayList<>();
+        for (ContieneRequestDto contieneRequestDto : dto.getContiene()) {
+            Contiene contiene = new Contiene();
+            Optional<Producto> producto = productoRepository.findById(contieneRequestDto.getProductoId());
+            
+            contiene.setProducto(producto.get());
+            contiene.setCantidad(contieneRequestDto.getCantidad());
+            contiene.setPedido(pedido);
+            contieneList.add(contiene);
+        }
+       
+        pedido.setContiene(contieneList);
 
         pedidoRepository.save(pedido);
         
-        PedidoResponseDto response = pedidoMapper.mapPedidoRequestDtoToPedidoResponseDto(dto);
-        
-        response.setCliente(clienteMapper.mapToClienteSPDto(cliente.get()));
-        
-        return response;
+        return pedidoMapper.mapToPedidoDto(pedido);
 	}
 
 	@Override

@@ -2,11 +2,9 @@ package com.colykke.dto.cliente;
 
 import java.util.List;
 
-import com.colykke.dto.pedido.PedidoResponseDto;
 import com.colykke.dto.pedido.PedidoSinClienteResponseDto;
 import com.colykke.dto.usuario.UsuarioResponseDto;
 
-import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

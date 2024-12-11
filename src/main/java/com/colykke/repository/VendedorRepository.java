@@ -14,4 +14,6 @@ public interface VendedorRepository extends JpaRepository<Vendedor, Long> {
 
     @Query("SELECT v FROM Vendedor v LEFT JOIN v.productos p GROUP BY v.id ORDER BY COUNT(p) DESC")
     List<Vendedor> findAllOrderByProductosCountDesc();
+    
+    Vendedor findByUsuarioId(Long id);
 }

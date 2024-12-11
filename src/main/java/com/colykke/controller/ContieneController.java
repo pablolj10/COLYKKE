@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +20,6 @@ import com.colykke.dto.contiene.ContieneResponseDto;
 import com.colykke.service.ContieneService;
 import com.colykke.util.ResponseUtil;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -54,18 +54,18 @@ public class ContieneController {
 //        return ResponseUtil.response(service.findAllByOrderByFechaPublicacionDesc(), HttpStatus.ACCEPTED, "Mostrando todas las reseñas de productos ordenadas por fecha de publicacion en orden descendente");
 //    }
 
-    @PostMapping()
-    public ResponseEntity<ApiResponse<ContieneResponseDto>> add(@RequestBody ContieneRequestDto contieneRequestDto) {
-        log.info("Peticion para añadir un contiene");
-        return ResponseUtil.response(service.add(contieneRequestDto), HttpStatus.OK, "Contiene creado con exito");
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<ApiResponse<ContieneResponseDto>> update(@PathVariable Long id,
-                                                                           @RequestBody ContieneRequestDto cafeteriaDto) {
-        log.info("Peticion para actualizar un contiene con el id" + id);
-        return ResponseUtil.response(service.update(id, cafeteriaDto), HttpStatus.OK, "Contiene actualizado con exito");
-    }
+//    @PostMapping()
+//    public ResponseEntity<ApiResponse<ContieneResponseDto>> add(@RequestBody ContieneRequestDto contieneRequestDto) {
+//        log.info("Peticion para añadir un contiene");
+//        return ResponseUtil.response(service.add(contieneRequestDto), HttpStatus.OK, "Contiene creado con exito");
+//    }
+//
+//    @PutMapping("/{id}")
+//    public ResponseEntity<ApiResponse<ContieneResponseDto>> update(@PathVariable Long id,
+//                                                                           @RequestBody ContieneRequestDto cafeteriaDto) {
+//        log.info("Peticion para actualizar un contiene con el id" + id);
+//        return ResponseUtil.response(service.update(id, cafeteriaDto), HttpStatus.OK, "Contiene actualizado con exito");
+//    }
     
     
     @DeleteMapping("/{id}")

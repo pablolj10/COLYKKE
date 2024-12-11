@@ -51,11 +51,10 @@ public class ProductoServiceImpl implements ProductoService {
 	@Override
 	public ProductoResponseDto add(ProductoRequestDto dto) {
 		Producto producto = productoMapper.mapProductoRequestDtoToProducto(dto);
-		Long id = (long) dto.getIdVendedor();
-		Optional<Vendedor> vendedor = vendedorRepository.findById(id);
+		Optional<Vendedor> vendedor = vendedorRepository.findById(dto.getVendedorId());
 		producto.setVendedor(vendedor.get());
 		productoRepository.save(producto);
-		ProductoResponseDto p = productoMapper.mapProductoRequestDtoToProductoResponseDto(dto);
+		ProductoResponseDto p = productoMapper.mapToProductoResponseDto(producto);
 		return p;
 	}
 

@@ -10,8 +10,10 @@ import com.colykke.dto.cliente.ClienteRequestDto;
 import com.colykke.dto.cliente.ClienteResponseDto;
 import com.colykke.dto.cliente.ClienteSinPedidosResponseDto;
 import com.colykke.entity.Cliente;
+import com.colykke.entity.Usuario;
 import com.colykke.mapper.ClienteMapper;
 import com.colykke.repository.ClienteRepository;
+import com.colykke.repository.UsuarioRepository;
 import com.colykke.service.ClienteService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +24,8 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Autowired ClienteRepository clienteRepository;
 	@Autowired ClienteMapper clienteMapper;
-
+	@Autowired UsuarioRepository usuarioRepository;
+	
 	@Override
 	public ClienteResponseDto findById(Long id) {
 		
@@ -45,8 +48,16 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Override
 	public ClienteSinPedidosResponseDto add(ClienteRequestDto dto) {
-		clienteRepository.save(clienteMapper.mapClienteRequestDtoToCliente(dto));
-		return clienteMapper.mapClienteRequestDtoToClienteSinPedidosResponseDto(dto);
+		Usuario usuario = usuarioRepository.findById(dto.getUsuarioId()).get();
+		if(usuario == null) {
+			throw new IllegalArgumentException("El usuario no se encuentra en la base de datos");
+		}
+		Cliente cliente = new Cliente();
+		cliente.setNombre(dto.getNombre());
+		//cliente.setTelefono();
+		cliente.setUsuario(usuario);
+		clienteRepository.save(cliente);
+		return clienteMapper.mapToClienteSinPedidosDto(cliente);
 	}
 
 	@Override
@@ -55,10 +66,16 @@ public class ClienteServiceImpl implements ClienteService {
 
 		if (clienteOptional.isPresent()) {
 			Cliente cliente = clienteMapper.mapToCliente(id, dto);
-
+			Usuario usuario = usuarioRepository.findById(dto.getUsuarioId()).get();
+			if(usuario == null) {
+				throw new IllegalArgumentException("El usuario no se encuentra en la base de datos");
+			}
+			cliente.setNombre(dto.getNombre());
+			//cliente.setTelefono();
+			cliente.setUsuario(usuario);
 			clienteRepository.save(cliente);
 
-			return clienteMapper.mapClienteRequestDtoToClienteSinPedidosResponseDto(dto);
+			return clienteMapper.mapToClienteSinPedidosDto(cliente);
 		}
 		log.error("No existe un cliente con el id: " + id);
 		throw new IllegalArgumentException("No existe un cliente con ese id");

@@ -13,6 +13,7 @@ import com.colykke.entity.Usuario;
 import com.colykke.mapper.UsuarioMapper;
 import com.colykke.repository.ClienteRepository;
 import com.colykke.repository.UsuarioRepository;
+import com.colykke.repository.VendedorRepository;
 import com.colykke.service.UsuarioService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +33,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 	
 	 @Autowired
 	 PasswordEncoder bcryptPasswordEncoder;
+	 
+	@Autowired
+	VendedorRepository vendedorRepository;
 	
 	@Override
 	public UsuarioResponseDto findById(Long id) {
@@ -60,8 +64,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 	@Override
 	public UsuarioResponseDto add(UsuarioRequestDto dto) {
 		dto.setPassword(bcryptPasswordEncoder.encode(dto.getPassword()));
-		usuarioRepository.save(usuarioMapper.mapUsuarioRequestDtoToUsuario(dto));
-		return usuarioMapper.mapUsuarioRequestDtoToUsuarioResponseDto(dto);
+		Usuario usuario = usuarioMapper.mapUsuarioRequestDtoToUsuario(dto);
+		usuarioRepository.save(usuario);
+		return usuarioMapper.mapToUsuarioDto(usuario);
 	}
 
 	@Override
@@ -86,7 +91,12 @@ public class UsuarioServiceImpl implements UsuarioService{
 			log.error("No existe un usuario con ese id, id: " + id);
 			throw new IllegalArgumentException("No existe un usuario con ese id");
 		}
-		clienteRepository.deleteById(clienteRepository.findByUsuarioId(id).getId());
+		if (clienteRepository.findByUsuarioId(id) != null) {
+			clienteRepository.deleteById(clienteRepository.findByUsuarioId(id).getId());
+		}
+		if (vendedorRepository.findByUsuarioId(id) != null) {
+			vendedorRepository.deleteById(vendedorRepository.findByUsuarioId(id).getId());
+		}
 		
 	}
 }

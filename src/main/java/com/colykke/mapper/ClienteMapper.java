@@ -13,6 +13,8 @@ import com.colykke.entity.Cliente;
 public interface ClienteMapper {
 
 	public ClienteResponseDto mapToClienteDto(Cliente cliente);
+	
+	public ClienteSinPedidosResponseDto mapToClienteSinPedidosDto(Cliente cliente);
 
 	public List<ClienteResponseDto> mapToClienteDto(List<Cliente> clientes);
 	
@@ -23,8 +25,6 @@ public interface ClienteMapper {
 	public ClienteResponseDto mapClienteRequestDtoToClienteResponseDto(ClienteRequestDto clienteDto);
 	
 	public ClienteSinPedidosResponseDto mapClienteRequestDtoToClienteSinPedidosResponseDto(ClienteRequestDto clienteDto);
-	
-	public ClienteSinPedidosResponseDto mapToClienteSPDto(Cliente cliente);
 	
 	public List<ClienteSinPedidosResponseDto> mapToClienteSPDto(List<Cliente> clientes);
 }
